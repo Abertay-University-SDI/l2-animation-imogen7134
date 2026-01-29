@@ -1,8 +1,19 @@
 #include "Level.h"
+#include "Player.h"
+
 
 Level::Level(sf::RenderWindow& hwnd, Input& in) :
 	BaseLevel(hwnd, in)
 {
+	if (!m_sheep.loadFromFile("gfx/sheep_sheet.png"))
+		std::cerr << "No sheep image found\n";
+	m_player.setTexture(&m_sheep, true);
+	m_player.setPosition({ 50,0 });
+	m_player.setSize({ 50, 50 });
+	m_player.setTextureRect(sf::IntRect({ 0,0 }, { 64, 64 }));
+
+
+	
 	m_snake.setRadius(20);
 	m_snake.setPosition({ 50, 50 });
 	m_snake.setFillColor(sf::Color::Green);
@@ -108,6 +119,7 @@ void Level::update(float dt)
 void Level::render()
 {
 	beginDraw();
+	m_window.draw(m_player);
 	m_window.draw(m_snake);
 	endDraw();
 }
