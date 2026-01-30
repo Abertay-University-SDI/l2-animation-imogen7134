@@ -21,5 +21,9 @@ private:
 	const float INPUT_BUFFER_LENGTH = 0.1f;
 	const float APPROX_ONE_OVER_ROOT_TWO = 0.70710678f;	// 1 / sqrt(2)
 	Animation m_walkDown;
+	Animation m_walkUp;
+	Animation m_walkRight;
+	Animation m_walkDownRight;
+	Animation m_walkUpRight;
 	Animation *m_currentAnimation;
 };
